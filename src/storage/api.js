@@ -33,3 +33,5 @@ export function storageApi(key) {
         setObject
     }
 }
+
+export const jwtStorage = storageApi('jwt')

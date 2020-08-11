@@ -1,4 +1,6 @@
 import React from 'react'
+import { jwtStorage, } from '../../storage/api'
+
 
 async function getData({ type, email, password, }) {
     const data = await fetch(`http://localhost:8080/${type}/authenticate`, {
@@ -44,8 +46,9 @@ export default function Login() {
 
             <button
                 onClick={() => getData({ type, email, password, })
-                    .then(e => console.log(e))
-                    .catch(e => console.log(e))}
+                    .then(({ content, }) => jwtStorage.set(content))
+                    .catch(e => console.log(e))
+                }
             >
                 Login
             </button>
