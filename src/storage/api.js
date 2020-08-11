@@ -16,10 +16,20 @@ export function storageApi(key) {
         set(mapper(item))
     }
 
+    function getObject() {
+        return getMapping(JSON.parse)
+    }
+
+    function setObject(item) {
+        setMapping(JSON.stringify, item)
+    }
+
     return {
         get,
         getMapping,
         set,
-        setMapping
+        setMapping,
+        getObject,
+        setObject
     }
 }
