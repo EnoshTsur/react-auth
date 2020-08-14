@@ -1,15 +1,9 @@
 import React from 'react'
-import { jwtStorage, } from '../../storage/simpleApi'
-
+import { useRedirectByJwt, } from '../../hooks/useAuth'
 
 export default function Company({ history, }) {
    
-    React.useEffect(() => {
-        const jwt = jwtStorage.get()
-        if(!jwt) {
-            history.push("/")
-        }
-    }, [])
+    useRedirectByJwt(history)
 
     return (
         <div>

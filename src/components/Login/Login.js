@@ -1,5 +1,5 @@
 import React from 'react'
-import { jwtStorage, } from '../../storage/api'
+import { jwtStorage, } from '../../storage/simpleApi'
 
 
 async function getData({ type, email, password, }) {
@@ -13,7 +13,7 @@ async function getData({ type, email, password, }) {
     return await data.json()
 }
 
-export default function Login() {
+export default function Login({ history, }) {
 
     const [email, setEmail,] = React.useState('')
     const [password, setPassword] = React.useState('')
@@ -46,7 +46,14 @@ export default function Login() {
 
             <button
                 onClick={() => getData({ type, email, password, })
-                    .then(({ content, }) => jwtStorage.set(content))
+                    .then(({ success, content, }) => {
+                        if(success) {
+                            jwtStorage.set(content)
+                            history.push(`/${type}`)
+                        } else {
+                            history.push('/error')
+                        }
+                    })
                     .catch(e => console.log(e))
                 }
             >
@@ -56,3 +63,5 @@ export default function Login() {
         </div>
     )
 }
+
+
