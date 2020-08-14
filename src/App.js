@@ -17,7 +17,10 @@ function App() {
                     path="/admin"
                     render={() => <Admin history={history} />}
                 />
-                <Route path="/company" component={Company} />
+                <Route
+                    path="/company"
+                    render={() => <Company history={history} />}
+                />
                 <Route exact path="/" component={Login} />
             </Switch>
         </Router>
