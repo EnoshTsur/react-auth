@@ -11,13 +11,16 @@ function App() {
     const history = createBrowserHistory()
 
     return (
-       <Router history={history}>
-           <Switch>
-               <Route path="/admin" component={Admin} />
-               <Route path="/company" component={Company} />
-               <Route exact path="/" component={Login} />
-           </Switch>
-       </Router>
+        <Router history={history}>
+            <Switch>
+                <Route
+                    path="/admin"
+                    render={() => <Admin history={history} />}
+                />
+                <Route path="/company" component={Company} />
+                <Route exact path="/" component={Login} />
+            </Switch>
+        </Router>
     );
 }
 

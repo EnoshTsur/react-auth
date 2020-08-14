@@ -1,12 +1,13 @@
 import React from 'react'
 import { jwtStorage, } from '../../storage/simpleApi'
 
-export default function Admin() {
+export default function Admin({ history, }) {
 
     React.useEffect(() => {
-        // print to the console if there is a jwt 
-        // on th e local storage
-        // ????
+        const jwt = jwtStorage.get()
+        if(!jwt) {
+            history.push("/")
+        }
     }, [])
 
     return (
