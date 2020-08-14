@@ -12,9 +12,15 @@ function App() {
 
     return (
        <Router history={history}>
-
+           <Switch>
+               <Route path="/admin" component={Admin} />
+               <Route path="/company" component={Company} />
+               <Route exact path="/" component={Login} />
+           </Switch>
        </Router>
     );
 }
 
 export default App;
+
+// export const jwtStorage = storage("jwt")
