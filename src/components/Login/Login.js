@@ -1,5 +1,6 @@
 import React from 'react'
 import { jwtStorage, } from '../../storage/simpleApi'
+import { useRedirectByJwt, } from '../../hooks/useAuth'
 
 
 async function getData({ type, email, password, }) {
@@ -19,6 +20,7 @@ export default function Login({ history, }) {
     const [password, setPassword] = React.useState('')
     const [type, setType] = React.useState('company')
 
+    useRedirectByJwt(history)
 
     return (
         <div>
